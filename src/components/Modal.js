@@ -1,15 +1,31 @@
-import React, { useContext } from 'react'
-import { GameContext } from './Main'
+import React, { useContext, useEffect, useRef } from "react";
+import { GameContext } from "./Main";
 
 export default function Modal() {
   const { score, handleRestart } = useContext(GameContext);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    if (buttonRef.current) {
+      buttonRef.current.focus();
+    }
+    if (buttonRef.current && buttonRef.current !== document.activeElement) {
+      buttonRef.current.focus();
+    }
+  }, []);
 
   return (
-    <div className="modal__screen">
+    <dialog className="modal__screen">
       <div className="modal">
         <p className="modal__text">You scored {score} words!</p>
-        <button className="modal__button" onClick={handleRestart}>OK, cool!</button>
+        <button
+          ref={buttonRef}
+          className="modal__button"
+          onClick={handleRestart}
+        >
+          Reset
+        </button>
       </div>
-    </div>
-  )
+    </dialog>
+  );
 }
