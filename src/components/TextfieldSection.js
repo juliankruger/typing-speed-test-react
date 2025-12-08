@@ -1,6 +1,6 @@
-import React from 'react'
-import TypeField from './TypeField'
-import WordField from './WordField'
+import React from "react";
+import TypeField from "./TypeField";
+import WordField from "./WordField";
 
 export default function TextfieldSection() {
   return (
@@ -8,5 +8,5 @@ export default function TextfieldSection() {
       <WordField />
       <TypeField />
     </section>
-  )
+  );
 }

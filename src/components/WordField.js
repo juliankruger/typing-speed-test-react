@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import Text from "./Text";
-import { GameContext } from './Main';
+import { GameContext } from "./Main";
 
 function WordField() {
   const { wordFieldRef } = useContext(GameContext);
@@ -9,7 +9,7 @@ function WordField() {
     <div ref={wordFieldRef} className="wordfield">
       <Text />
     </div>
-  )
+  );
 }
 
-export default React.memo(WordField)
+export default React.memo(WordField);

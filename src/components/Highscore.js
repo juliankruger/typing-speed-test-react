@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { GameContext } from './Main';
+import React, { useContext } from "react";
+import { GameContext } from "./Main";
 
 export default function Highscore() {
   const { highscore } = useContext(GameContext);
@@ -8,5 +8,5 @@ export default function Highscore() {
       <h3>Highscore</h3>
       <p>{highscore}</p>
     </div>
-  )
+  );
 }
