@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Modal from './Modal';
-import DataSection from './DataSection';
-import TextfieldSection from './TextfieldSection';
-import { wordList } from '../const/randomWords';
+import React, { useState, useEffect, useRef } from "react";
+import Modal from "./Modal";
+import DataSection from "./DataSection";
+import TextfieldSection from "./TextfieldSection";
+import { wordList } from "../const/randomWords";
 
 export const GameContext = React.createContext();
 
@@ -29,13 +29,12 @@ export default function Main() {
     stringOfWords,
     typeFieldRef,
     wordFieldRef,
-    TIME
-  }
+    TIME,
+  };
 
   useEffect(() => {
     handleReset();
-  }, [])
-
+  }, []);
 
   function handleReset() {
     setFinish(false);
@@ -45,9 +44,10 @@ export default function Main() {
     /* Generate a new string of 250 randomly chosen words. */
     var randomWords = "";
     for (var i = 0; i < 250; i++) {
-      var word = wordList[Math.floor(Math.random() * wordList.length)] + " "
-      if (!randomWords.includes(word)) { randomWords += word; }
-      else {
+      var word = wordList[Math.floor(Math.random() * wordList.length)] + " ";
+      if (!randomWords.includes(word)) {
+        randomWords += word;
+      } else {
         i--;
       }
     }
@@ -63,10 +63,10 @@ export default function Main() {
     } else {
       typeFieldRef.current.readOnly = false;
     }
-  }, [finish])
+  }, [finish]);
 
   function handleStart() {
-    if (finish) return
+    if (finish) return;
     if (!start) {
       setReset(false);
       setStart(true);
@@ -78,12 +78,12 @@ export default function Main() {
 
     /* Count the words and add to score */
     var score = 0;
-    typeFieldRef.current.value.split(" ").forEach(word => {
-      if (word === "") return
+    typeFieldRef.current.value.split(" ").forEach((word) => {
+      if (word === "") return;
       if (stringOfWords.join("").includes(word)) {
         score += 1;
       }
-    })
+    });
     handleScore(score);
     setFinish(true);
   }
@@ -100,7 +100,6 @@ export default function Main() {
     handleReset();
   }
 
-
   return (
     <GameContext.Provider value={gameContextValue}>
       <main className="main">
@@ -109,5 +108,5 @@ export default function Main() {
         <TextfieldSection />
       </main>
     </GameContext.Provider>
-  )
+  );
 }
