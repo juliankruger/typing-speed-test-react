@@ -6,12 +6,15 @@ export default function Modal() {
   const buttonRef = useRef(null);
 
   useEffect(() => {
-    if (buttonRef.current) {
-      buttonRef.current.focus();
-    }
-    if (buttonRef.current && buttonRef.current !== document.activeElement) {
-      buttonRef.current.focus();
-    }
+    setTimeout(() => {
+      if (buttonRef.current) {
+        buttonRef.current.focus();
+      }
+      if (buttonRef.current && buttonRef.current !== document.activeElement) {
+        buttonRef.current.focus();
+      }
+    }, 1000);
+    return clearTimeout();
   }, []);
 
   return (

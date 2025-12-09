@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import Modal from "./Modal";
-import DataSection from "./DataSection";
-import TextfieldSection from "./TextfieldSection";
+import React, { useEffect, useRef, useState } from "react";
 import { wordList } from "../const/randomWords";
+import DataSection from "./DataSection";
+import Modal from "./Modal";
+import TextfieldSection from "./TextfieldSection";
 
 export const GameContext = React.createContext();
 
