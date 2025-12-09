@@ -19,9 +19,9 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1rem;
   border: 2px solid var(--accent-color);
-  border-radius: 10px;
   cursor: pointer;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
+  max-width: 100px;
 }
 
 .data-section__button:hover,

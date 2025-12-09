@@ -956,7 +956,6 @@ export const wordList = [
   "post",
   "spend",
   "chord",
-  "fat",
   "glad",
   "original",
   "share",

@@ -40,6 +40,9 @@ export default function Main() {
     setFinish(false);
     setStart(false);
     setReset(true);
+    if (typeFieldRef.current) {
+      typeFieldRef.current.focus();
+    }
 
     /* Generate a new string of 250 randomly chosen words. */
     var randomWords = "";
@@ -54,7 +57,9 @@ export default function Main() {
     setStringOfWords(randomWords.split(""));
 
     /* Scroll the Wordfield to the top */
-    wordFieldRef.current.scrollTop = wordFieldRef.current.offsetTop;
+    if (wordFieldRef.current) {
+      wordFieldRef.current.scrollTop = wordFieldRef.current.offsetTop;
+    }
   }
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import Text from "./Text";
 import { GameContext } from "./Main";
+import Text from "./Text";
 
 function WordField() {
   const { wordFieldRef } = useContext(GameContext);
