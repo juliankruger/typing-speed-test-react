@@ -5,8 +5,8 @@
   max-height: 30vh;
   min-width: 50%;
   overflow-y: scroll;
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 2px solid var(--accent-color);
+  padding: 10px;
 }
 
 .wordfield__text {
@@ -26,6 +26,7 @@
 
 .wordfield__text--wrong {
   color: red;
+  text-decoration: line-through;
 }
 
 .wordfield::-webkit-scrollbar {

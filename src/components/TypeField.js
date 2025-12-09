@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GameContext } from "./Main";
+import ResetButton from "./ResetButton";
 
 export default function TypeField() {
   const { handleStart, reset, stringOfWords, typeFieldRef, wordFieldRef } =
     useContext(GameContext);
   const [typedWords, setTypedWords] = useState("");
+  const rightText = "wordfield__text--right";
+  const wrongText = "wordfield__text--wrong";
 
   useEffect(() => {
     /* Remove green or red color if the user deletes text */
@@ -12,10 +15,10 @@ export default function TypeField() {
       if (index > typedWords.length - 1) {
         document
           .getElementById(`wordfield__letter-${index}`)
-          .classList.remove("wordfield__text--wrong");
+          .classList.remove(wrongText);
         document
           .getElementById(`wordfield__letter-${index}`)
-          .classList.remove("wordfield__text--right");
+          .classList.remove(rightText);
       }
     });
 
@@ -47,14 +50,14 @@ export default function TypeField() {
       if (letter === stringOfWords[index]) {
         document
           .getElementById(`wordfield__letter-${index}`)
-          .classList.remove("wordfield__text--wrong");
-        currentLetter.classList.add("wordfield__text--right");
+          .classList.remove(wrongText);
+        currentLetter.classList.add(rightText);
       } else {
-        currentLetter.classList.remove("wordfield__text--right");
-        currentLetter.classList.add("wordfield__text--wrong");
+        currentLetter.classList.remove(rightText);
+        currentLetter.classList.add(wrongText);
       }
     });
-  }, [stringOfWords, typedWords, wordFieldRef]);
+  }, [rightText, stringOfWords, typedWords, wordFieldRef, wrongText]);
 
   useEffect(() => {
     if (reset) {
@@ -74,24 +77,27 @@ export default function TypeField() {
   }
 
   return (
-    <textarea
-      ref={typeFieldRef}
-      placeholder="Start typing to start the timer."
-      className="typefield"
-      name="Typefield"
-      id="typefield"
-      onPaste={(e) => {
-        e.preventDefault();
-        return false;
-      }}
-      onCopy={(e) => {
-        e.preventDefault();
-        return false;
-      }}
-      onChange={(e) => {
-        handleChange(e.target.value);
-      }}
-      value={typedWords}
-    />
+    <>
+      <textarea
+        ref={typeFieldRef}
+        placeholder="Start typing to start the timer."
+        className="typefield"
+        name="Typefield"
+        id="typefield"
+        onPaste={(e) => {
+          e.preventDefault();
+          return false;
+        }}
+        onCopy={(e) => {
+          e.preventDefault();
+          return false;
+        }}
+        onChange={(e) => {
+          handleChange(e.target.value);
+        }}
+        value={typedWords}
+      />
+      <ResetButton />
+    </>
   );
 }
