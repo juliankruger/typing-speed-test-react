@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GameContext } from "./Main";
 
 export default function TypeField() {
@@ -22,7 +22,7 @@ export default function TypeField() {
     /* Scroll to the last letter if the user deletes text */
     const typedLetters = typedWords.split("");
     const lastLetter = document.getElementById(
-      `wordfield__letter-${typedLetters.length}`,
+      `wordfield__letter-${typedLetters.length}`
     );
     if (lastLetter && lastLetter.offsetTop < wordFieldRef.current.scrollTop) {
       wordFieldRef.current.scrollTop = lastLetter.offsetTop;
@@ -59,8 +59,9 @@ export default function TypeField() {
   useEffect(() => {
     if (reset) {
       setTypedWords("");
+      typeFieldRef.current.focus();
     }
-  }, [reset]);
+  }, [reset, typeFieldRef]);
 
   function handleChange(value) {
     handleStart();
